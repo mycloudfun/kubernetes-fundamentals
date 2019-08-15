@@ -98,18 +98,16 @@ def hello_name(name):
     return "Hello {}!".format(name)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0')
 EOF
 
 python3 app.py 
 ```
 
-4. Open another ssh connection to minikube and execute curl
+4. Check if the application is running:
 
 ```bash
-minikube ssh
+curl $(minikube ip):5000
 
-curl localhost:5000
-
-curl localhost:5000/andrzej
+curl $(minikube ip):5000/andrzej
 ```
