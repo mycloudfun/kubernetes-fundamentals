@@ -11,21 +11,21 @@ Welcome to exercise-2. Here I'm going to show you how to install the minikube on
 
 More information at:
 
-(https://kubernetes.io/docs/tasks/tools/install-minikube/)[https://kubernetes.io/docs/tasks/tools/install-minikube/]
+[https://kubernetes.io/docs/tasks/tools/install-minikube/](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 
 ## Instalation
 
 1. Download the Latest version of Virtualbox and install it:
 
-(https://www.virtualbox.org/)[https://www.virtualbox.org/]
+[https://www.virtualbox.org/](https://www.virtualbox.org/)
 
 2. Download the latest version of Kubectl and install it:
 
-(https://kubernetes.io/docs/tasks/tools/install-kubectl/)[https://kubernetes.io/docs/tasks/tools/install-kubectl/]
+[https://kubernetes.io/docs/tasks/tools/install-kubectl/](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 3. Download and install the minikube
 
-(https://github.com/kubernetes/minikube/releases)[https://github.com/kubernetes/minikube/releases]
+[https://github.com/kubernetes/minikube/releases](https://github.com/kubernetes/minikube/releases)
 
 
 ## Initial start
