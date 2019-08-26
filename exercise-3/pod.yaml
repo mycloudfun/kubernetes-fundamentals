@@ -7,4 +7,4 @@ metadata:
 spec:
   containers:
   - name: training-api
-    image: k8s-training/api:1.0
+    image: mycloudfun/training-api:1.0
