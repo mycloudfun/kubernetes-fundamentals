@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, jsonify
+import socket
 app = Flask(__name__)
 
 @app.route('/')
@@ -15,10 +16,19 @@ def healthz():
 
 @app.route('/website')
 def website_open():
-    f = open('website.html', 'r')
+    f = open('/data/website.html', 'r')
     file_contents = f.read()
     return file_contents
     f.close()
+
+@app.route('/info')
+def info():
+    try: 
+        host_name = socket.gethostname() 
+        host_ip = socket.gethostbyname(host_name) 
+        return jsonify({'Hostname': host_name, 'IP': host_ip }), 200
+    except: 
+        return jsonify ({'Message': 'Unable to get Hostname and IP'}), 500 
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
