@@ -8,3 +8,4 @@ spec:
   containers:
   - name: training-api
     image: mycloudfun/training-api:1.0
+    imagePullPolicy: Always

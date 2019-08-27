@@ -61,6 +61,12 @@ The file **pod.yaml** contain the manifest of our pod with the image we built ea
 kubectl apply -f pod.yaml
 ```
 
+Access the API:
+
+```bash
+kubectl port-forward <pod_name> 8080:5000
+```
+
 ## Tasks
 
 1. Print the information about pod
