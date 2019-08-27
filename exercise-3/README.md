@@ -61,6 +61,14 @@ The file **pod.yaml** contain the manifest of our pod with the image we built ea
 kubectl apply -f pod.yaml
 ```
 
+Another option is to use kubectl run to create the pod:
+
+```bash
+kubectl run training-api --restart=Never --image=mycloudfun/training-api:1.0 -l app=api
+
+kubectl run training-api --restart=Never --image=mycloudfun/training-api:1.0 -l app=api --dry-run -o yaml
+```
+
 Access the API:
 
 ```bash
