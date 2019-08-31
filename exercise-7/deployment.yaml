@@ -20,4 +20,7 @@ spec:
         imagePullPolicy: Always
         env:
         - name: APP_PORT
-          value: "7000"
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: APP_PORT

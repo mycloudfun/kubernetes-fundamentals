@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: training-api
+spec:
+  containers:
+  - image: mycloudfun/training-api:1.0
+    name: training-api
+    volumeMounts:
+    - mountPath: /data
+      name: website-volume
+  volumes:
+  - name: website-volume
+    emptyDir: {}

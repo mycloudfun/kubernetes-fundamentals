@@ -18,6 +18,11 @@ spec:
       - name: training-api
         image: mycloudfun/training-api:1.0
         imagePullPolicy: Always
-        env:
-        - name: APP_PORT
-          value: "7000"
+        volumeMounts:
+        - mountPath: "/data"
+          name: website-vol
+      volumes:
+      - name: website-vol
+        persistentVolumeClaim:
+          claimName: website-pvc
+
