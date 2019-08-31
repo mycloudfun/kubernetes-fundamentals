@@ -1,5 +1,9 @@
 from flask import Flask, jsonify
 import socket
+import os
+
+app_port = int(os.environ.get("APP_PORT", 5000))
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -31,4 +35,4 @@ def info():
         return jsonify ({'Message': 'Unable to get Hostname and IP'}), 500 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=app_port)
