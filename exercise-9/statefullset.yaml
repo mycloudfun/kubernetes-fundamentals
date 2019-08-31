@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: training-api
+spec:
+  selector:
+    matchLabels:
+      app: training-api
+  serviceName: "api-svc"
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: training-api
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: training-api
+        image: mycloudfun/training-api:4.0
+        ports:
+        - containerPort: 5000
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /data
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "fast"
+      resources:
+        requests:
+          storage: 1Gi

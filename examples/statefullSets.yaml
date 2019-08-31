@@ -1,0 +1,30 @@
+Headless Service "training-api"
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: training-api
+spec:
+  selector:
+    matchLabels:
+      app: training-api 
+  serviceName: "training-api"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: training-api
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: training-api
+        image: mycloudfun/training-api:1.0
+        ports:
+        - containerPort: 5000
+          name: web
+        volumeMounts:
+        - name: website
+          mountPath: /data
+  ---
+  VolumeClaimTemplate "website"
+  

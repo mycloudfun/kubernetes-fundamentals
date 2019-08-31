@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: training-api-ingress
+spec:
+  rules:
+  - host: training-api.pl
+    http:
+      paths:
+      - backend:
+          serviceName: training-api-service
+          servicePort: 8080
+
+          

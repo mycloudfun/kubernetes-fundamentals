@@ -37,7 +37,7 @@ kubetail <pod_prefix> -f
 
 ## EFK
 
-EFK stands from Elasticsearch, Logstash and Kibana.
+EFK stands from Elasticsearch, Fluentd and Kibana.
 
 To install the components, follow the below steps.
 

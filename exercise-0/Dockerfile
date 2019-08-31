@@ -10,10 +10,6 @@ RUN apk add --update curl && rm -rf /var/cache/apk/*
 
 RUN pip install -r requirements.txt
 
-RUN adduser -S myapp
-
-USER myapp
-
 EXPOSE 5000
 
 ENTRYPOINT ["python"]

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: api
-  name: training-api
+  name: training-api-service
 spec:
   ports:
   - port: 8080
