@@ -1,6 +1,6 @@
 # Exercise-5
 
-Welcome to exercise-5. Here we will try to configure and modify ReplicaSet object
+Welcome to exercise-5. Here we will try to configure and modify ReplicaSet object.
 
 ## Sample commands
 
@@ -14,10 +14,10 @@ or
 kubectl get rs --all-namespaces
 ```
 
-Describe the replicaset object
+Describe the replicaset object:
 
 ```bash
-kubectl describe rs <name>:
+kubectl describe rs <name>
 ```
 
 Edit the repolicaset object:
@@ -43,5 +43,4 @@ kubectl scale --replicas=3 -f <replicaset-file>.yaml
 3. Use **kubectl port-forward** command to access the service and hit into endpoint **/info**
 4. Destroy the pod displayed in previous command, re-run the **kubectl port-forward** and hit again the endpoint
 5. Scale the ReplicaSet to 5 replicas
-6. Destroy the objects created in this exercies
-
+6. Destroy the objects created in this exercise
