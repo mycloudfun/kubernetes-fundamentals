@@ -4,7 +4,7 @@ Welcome to exercise-14. In this exercise we want to create our first Kubernetes 
 
 ## Jenkins Operator
 
-The project repository is available at: (https://github.com/jenkinsci/kubernetes-operator)[https://github.com/jenkinsci/kubernetes-operator]
+The project repository is available at: [https://github.com/jenkinsci/kubernetes-operator](https://github.com/jenkinsci/kubernetes-operator)
 
 The aim of this project is to create managed jenkins instance build natively in the Kubernetes.
 
