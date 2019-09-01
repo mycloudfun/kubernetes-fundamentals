@@ -61,5 +61,20 @@ kubectl get secret jenkins-operator-credentials-training -o 'jsonpath={.data.pas
 
 ```bash
 minikube service jenkins-operator-http-training --url
+
+# Access the jenkins GUI using generated link
 ```
 
+4. Start the **Display Weather in Warsaw** job to
+
+5. Review the code of pipelines and jobs
+
+## Tasks
+
+1. According to below documentation:
+
+(https://github.com/jenkinsci/kubernetes-operator/blob/master/documentation/v0.1.1/getting-started.md)[https://github.com/jenkinsci/kubernetes-operator/blob/master/documentation/v0.1.1/getting-started.md]
+
+Add one extra plugin to the jenkins.
+
+2. Destroy all created resources.
