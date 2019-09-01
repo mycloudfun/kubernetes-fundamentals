@@ -73,7 +73,7 @@ minikube service jenkins-operator-http-training --url
 
 1. According to below documentation:
 
-(https://github.com/jenkinsci/kubernetes-operator/blob/master/documentation/v0.1.1/getting-started.md)[https://github.com/jenkinsci/kubernetes-operator/blob/master/documentation/v0.1.1/getting-started.md]
+[https://github.com/jenkinsci/kubernetes-operator/blob/master/documentation/v0.1.1/getting-started.md](https://github.com/jenkinsci/kubernetes-operator/blob/master/documentation/v0.1.1/getting-started.md)
 
 Add one extra plugin to the jenkins.
 
