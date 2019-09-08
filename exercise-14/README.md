@@ -10,31 +10,31 @@ The aim of this project is to create managed jenkins instance build natively in 
 
 ## Operator Installation
 
-1. Check what api-resources are currently available in our minikube cluster
+1. Check what api-resources are currently available in our minikube cluster:
 
 ```bash
 kubectl api-resources
 ```
 
-2. Configure Custom Resource Definition
+2. Configure Custom Resource Definition:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/crds/jenkins_v1alpha2_jenkins_crd.yaml
 ```
 
-3. Check api-resources again
+3. Check api-resources again:
 
 ```bash
 kubectl api-resources |grep -i jenkins
 ```
 
-4. Install Jenkins Operator together with all dependencies (RBAC, ServiceAccount)
+4. Install Jenkins Operator together with all dependencies (RBAC, ServiceAccount):
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/jenkinsci/kubernetes-operator/master/deploy/all-in-one-v1alpha2.yaml
 ```
 
-5. Watch the pod to see if the operator is already installed
+5. Watch the pod to see if the operator is already installed:
 
 ```bash
 kubectl get pods -w
@@ -43,31 +43,42 @@ kubectl get pods -w
 
 When operator is up and running, we can start to provision the targer jenkins instance.
 
-1. Review carefully the jenkins.yaml file and apply it
+1. Review carefully the jenkins.yaml file and apply it:
 
 ```bash
 cat jenkins.yaml
 kubectl create -f jenkins.yaml
 ```
 
-2. Get the credentials to newly provisioned instance of jenkins
+2. Create the ingress for the jenkins as well as entry in **/etc/hosts** or **%SystemRoot%\system32\drivers\etc\hosts** in Windows:
+
+```bash
+kubectl create -f ingress.yaml
+
+sudo vim /etc/hosts
+
+### ENTRY ###
+$minikubeip jenkins.local
+#############
+```
+
+
+3. Get the credentials to newly provisioned instance of jenkins:
 
 ```bash
 kubectl get secret jenkins-operator-credentials-training -o 'jsonpath={.data.user}' | base64 -d
 kubectl get secret jenkins-operator-credentials-training -o 'jsonpath={.data.password}' | base64 -d
 ```
 
-3. Access the instance 
+4. Access the instance:
 
 ```bash
-minikube service jenkins-operator-http-training --url
-
-# Access the jenkins GUI using generated link
+http://jenkins.local
 ```
 
-4. Start the **Display Weather in Warsaw** job to
+5. Start the **Display Weather in Warsaw** job to display the current weather in Warsaw.
 
-5. Review the code of pipelines and jobs
+6. Review the code of pipelines and jobs.
 
 ## Tasks
 
