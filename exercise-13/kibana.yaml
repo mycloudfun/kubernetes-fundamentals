@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kibana
@@ -39,3 +39,20 @@ spec:
   ports:
   - port: 5601
     targetPort: 5601
+
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: kibana-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: kibana.minikube.local
+    http:
+      paths:
+      - backend:
+          serviceName: kibana
+          servicePort: 5601
+

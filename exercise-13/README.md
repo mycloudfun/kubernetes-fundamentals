@@ -56,33 +56,23 @@ kubectl apply -f elastic.yaml -n logging
 
 kubectl get pods -n logging
 kubectl get svc -n logging
+kubectl get ingress -n logging
 
-# take a note of NodePort of the elasticsearch service and use curl to access it
-curl $(minikube ip):<port>
+# take a note of ingress address and add correspond entry in /etc/hosts to point to our ElasticSearch instance
+sudo vim /etc/hosts
+# example: 192.168.99.104 es.minikube.local
+
+# Query the ElasticSearch to make sure the service is running
+curl es.minikube.local
 ```
-
-3. **Kibana**
+3. **Fluentd**
 
 ```bash
-kubectl apply -f kibana.yaml -n logging
-
-# verify
-
-kubectl get pods -n logging
-kubectl get svc -n logging
-
-# take a note of NodePort of the kibana service and access it using your browser:
-http://MINIKUBE_IP:KIBANA_NODE_PORT
-```
-
-4. **Fluentd**
-
-```bash
-# Apply the necesssary RBAC permissions
-kubectl create -f fluentd-rbac.yaml
+# Apply the necessary RBAC permissions
+kubectl apply -f fluentd-rbac.yaml
 
 # Create the DaemonSet
-kubectl create -f fluetnd-daemonset.yaml
+kubectl apply -f fluetnd-daemonset.yaml
 
 # Verify
 kubectl get pod -n kube-system
@@ -93,6 +83,23 @@ kubectl logs <fluentd_pod> -n kube-system
 # Expect the output like:
 # Connection opened to Elasticsearch cluster =>
 #  {:host=>"elasticsearch.logging", :port=>9200, :scheme=>"http"}
+```
+
+4. **Kibana**
+
+```bash
+kubectl apply -f kibana.yaml -n logging
+
+# verify
+
+kubectl get pods -n logging
+kubectl get svc -n logging
+kubectl get ingress -n logging
+
+# take a note of ingress address and add correspond entry in /etc/hosts to point to our ElasticSearch instance
+sudo vim /etc/hosts
+# example: 192.168.99.104 kibana.minikube.local
+http://kibana.minikube.local
 ```
 
 5. Sample application
