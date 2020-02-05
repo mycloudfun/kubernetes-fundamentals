@@ -47,18 +47,18 @@ When operator is up and running, we can start to provision the targer jenkins in
 
 ```bash
 cat jenkins.yaml
-kubectl create -f jenkins.yaml
+kubectl apply -f jenkins.yaml
 ```
 
 2. Create the ingress for the jenkins as well as entry in **/etc/hosts** or **%SystemRoot%\system32\drivers\etc\hosts** in Windows:
 
 ```bash
-kubectl create -f ingress.yaml
+kubectl apply -f ingress.yaml
 
 sudo vim /etc/hosts
 
 ### ENTRY ###
-$minikubeip jenkins.local
+$minikubeip jenkins.minikube.local
 #############
 ```
 
@@ -73,7 +73,7 @@ kubectl get secret jenkins-operator-credentials-training -o 'jsonpath={.data.pas
 4. Access the instance:
 
 ```bash
-http://jenkins.local
+http://jenkins.minikube.local
 ```
 
 5. Start the **Display Weather in Warsaw** job to display the current weather in Warsaw.

@@ -4,7 +4,7 @@ metadata:
   name: jenkins-operator-http-training-ingress
 spec:
   rules:
-  - host: jenkins.local
+  - host: jenkins.minikube.local
     http:
       paths:
       - backend:
