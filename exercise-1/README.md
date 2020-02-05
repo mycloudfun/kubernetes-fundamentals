@@ -1,6 +1,53 @@
 # Kubernetes API
 
-In this excercise we will walkthrough the kubernetes API objects
+In this exercise we will walkthrough the Kubernetes API objects
+
+## ASDF Installation
+
+Before we begin the actual work, it necessary to set up the computer environment. I strongly recommend using **asdf** tool to manage the stack of cloud native best applications.
+
+[https://github.com/asdf-vm/asdf](https://github.com/asdf-vm/asdf)
+
+Here are some of examples of usage:
+
+```bash
+# Installation:
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
+
+# Install dependencies
+sudo apt install \
+  automake autoconf libreadline-dev \
+  libncurses-dev libssl-dev libyaml-dev \
+  libxslt-dev libffi-dev libtool unixodbc-dev \
+  unzip curl -y
+
+# Bash configuration
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+
+# List available packages
+asdf plugin list all
+
+# Enable example plugin and install with desired version
+asdf plugin add kubectl
+asdf install kubectl latest
+
+# List installed packages
+asdf list
+
+# List all available versions of given package
+asdf list all kubectl
+
+# Set the version globally or locally 
+# Global writes to $HOME/.tool-version
+asdf global kubectl 1.17.2
+
+# Local writes to $PWD/.tool-versions
+asdf local kubectl 1.17.2
+
+# List current versions
+asdf current
+```
 
 ## Use an HTTP Proxy to Access the Kubernetes API
 
