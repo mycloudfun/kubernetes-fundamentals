@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: myapp-ingress
+spec:
+  rules:
+  - host: myapp.minikube.local
+    http:
+      paths:
+      - backend:
+          serviceName: myapp
+          servicePort: http
