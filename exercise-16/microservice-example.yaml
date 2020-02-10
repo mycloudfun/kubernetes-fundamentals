@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-example
+  labels:
+    app: prometheus-example
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: prometheus-example
+  template:
+    metadata:
+      labels:
+        app: prometheus-example
+    spec:
+      containers:
+      - name: python-prometheus
+        image: philwinder/prometheus-python:0.1.4
+        imagePullPolicy: Always
+
+---        
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: prometheus-example
+  name: prometheus-example
+spec:
+  ports:
+  - port: 8080
+    name: http
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: prometheus-example
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: prometheus-example-ingress
+spec:
+  rules:
+  - host: app.minikube.local
+    http:
+      paths:
+      - backend:
+          serviceName: prometheus-example
+          servicePort: http
+
