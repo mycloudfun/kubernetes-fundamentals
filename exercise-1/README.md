@@ -15,6 +15,8 @@ Here are some of examples of usage:
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 
 # Install dependencies
+sudo apt update
+
 sudo apt install \
   automake autoconf libreadline-dev \
   libncurses-dev libssl-dev libyaml-dev \
